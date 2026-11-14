@@ -4,6 +4,7 @@
 int main() {
     int opcion;
     float ingreso, totalIngresos = 0;
+    float gasto, totalGastos = 0;
 
     do {
         printf("\nCONTROL DE INGRESOS Y GASTOS\n");
@@ -35,8 +36,17 @@ int main() {
              }
              break;
 
-            case 2:                printf("Registrar gasto\n");
-                break;
+            case 2:
+            printf("Cuanto dinero gastaste: ");
+            scanf("%f", &gasto);
+
+            if (gasto > 0) {
+            totalGastos = totalGastos + gasto;
+            printf("Gasto registrado\n");
+            } else {
+            printf("La cantidad debe ser mayor a 0\n");
+              }
+            break;
 
             case 3:
                 printf("Ver movimientos\n");
@@ -51,8 +61,10 @@ int main() {
                 break;
 
             case 6:
-                printf("Ver balance\n");
-                break;
+            printf("\nTotal de ingresos: %.2f\n", totalIngresos);
+            printf("Total de gastos: %.2f\n", totalGastos);
+            printf("Dinero disponible: %.2f\n", totalIngresos - totalGastos);
+            break;
 
             case 7:
                 printf("Poner presupuesto\n");
