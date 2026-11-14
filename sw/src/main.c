@@ -3,6 +3,7 @@
 
 int main() {
     int opcion;
+    float ingreso, totalIngresos = 0;
 
     do {
         printf("\nCONTROL DE INGRESOS Y GASTOS\n");
@@ -23,11 +24,18 @@ int main() {
 
         switch(opcion) {
             case 1:
-                printf("Registrar ingreso\n");
-                break;
+             printf("Cuanto dinero recibiste: ");
+             scanf("%f", &ingreso);
 
-            case 2:
-                printf("Registrar gasto\n");
+             if (ingreso > 0) {
+             totalIngresos = totalIngresos + ingreso;
+             printf("Ingreso registrado\n");
+             } else {
+             printf("La cantidad debe ser mayor a 0\n");
+             }
+             break;
+
+            case 2:                printf("Registrar gasto\n");
                 break;
 
             case 3:
