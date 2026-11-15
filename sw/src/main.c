@@ -4,6 +4,7 @@ int main() {
     int opcion;
     float ingreso, totalIngresos = 0;
     float gasto, totalGastos = 0;
+    float presupuesto = 0;
 
     float movimientos[100];
     int tipos[100];
@@ -94,12 +95,32 @@ int main() {
             break;
 
             case 7:
-                printf("Poner presupuesto\n");
-                break;
+            printf("Cuanto dinero tienes de presupuesto: ");
+            scanf("%f", &presupuesto);
+
+            if (presupuesto > 0) {
+            printf("Presupuesto guardado\n");
+            } else {
+            presupuesto = 0;
+            printf("Cantidad incorrecta\n");
+        }
+            break;
 
             case 8:
-                printf("Comparar presupuesto\n");
-                break;
+            if (presupuesto > 0) {
+            printf("Presupuesto: %.2f\n", presupuesto);
+            printf("Gastos: %.2f\n", totalGastos);
+            printf("Dinero restante: %.2f\n", presupuesto - totalGastos);
+
+             if (totalGastos > presupuesto) {
+            printf("Te pasaste del presupuesto\n");
+        } else {
+            printf("Todavia estas dentro del presupuesto\n");
+        }
+    } else {
+        printf("Primero debes poner un presupuesto\n");
+    }
+    break;
 
             case 9:
                 printf("Corregir movimiento\n");
