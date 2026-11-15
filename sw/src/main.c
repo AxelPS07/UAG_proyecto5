@@ -1,10 +1,15 @@
-
 #include <stdio.h>
 
 int main() {
     int opcion;
     float ingreso, totalIngresos = 0;
     float gasto, totalGastos = 0;
+
+    float movimientos[100];
+    int tipos[100];
+    int cantidad = 0;
+    int i;
+
 
     do {
         printf("\nCONTROL DE INGRESOS Y GASTOS\n");
@@ -30,6 +35,11 @@ int main() {
 
              if (ingreso > 0) {
              totalIngresos = totalIngresos + ingreso;
+             if (cantidad < 100) {
+             movimientos[cantidad] = ingreso;
+             tipos[cantidad] = 1;
+             cantidad++;
+}
              printf("Ingreso registrado\n");
              } else {
              printf("La cantidad debe ser mayor a 0\n");
@@ -42,6 +52,11 @@ int main() {
 
             if (gasto > 0) {
             totalGastos = totalGastos + gasto;
+            if (cantidad < 100) {
+            movimientos[cantidad] = gasto;
+            tipos[cantidad] = 2;
+            cantidad++;
+}
             printf("Gasto registrado\n");
             } else {
             printf("La cantidad debe ser mayor a 0\n");
@@ -49,8 +64,20 @@ int main() {
             break;
 
             case 3:
-                printf("Ver movimientos\n");
-                break;
+            printf("\nMOVIMIENTOS REGISTRADOS\n");
+
+            if (cantidad == 0) {
+            printf("No hay movimientos registrados\n");
+            } else {
+            for (i = 0; i < cantidad; i++) {
+            if (tipos[i] == 1) {
+                printf("Ingreso: %.2f\n", movimientos[i]);
+            } else {
+                printf("Gasto: %.2f\n", movimientos[i]);
+            }
+        }
+    }
+    break;
 
             case 4:
                 printf("Ver gastos por categoria\n");
